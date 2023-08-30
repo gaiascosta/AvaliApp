@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'segunda_pagina.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -79,7 +80,9 @@ class _HomeState extends State<Home> {
                         color: Colors.black,
 
                       ),
-                      onPressed: () {},
+                      onPressed: () {Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SegundaPagina()));},
                     ))
               ],
             )));
