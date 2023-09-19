@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,11 +11,22 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
+    double screenHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
 
     double paddingWidth = screenWidth * 0.01;
     double paddingHeight = screenHeight * 0.01;
+
+    var spinkit = SpinKitWave(
+      color: Colors.green,
+      size: screenHeight * 0.06,
+    );
     return Scaffold(
         backgroundColor: Colors.grey[300],
         body: Column(
@@ -30,30 +42,19 @@ class _HomeState extends State<Home> {
             ),
             Padding(
               padding: EdgeInsets.all(paddingHeight * 3),
-              child:
-                  const Text("Bem vindo ao AvaliApp, em prol de uma vida digna",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        decoration: TextDecoration.none,
-                      )),
+              child: Text("Bem vindo ao AvaliApp, em prol de uma vida digna",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.03,
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                  )),
             ),
             Padding(
-                padding: EdgeInsets.all(paddingHeight * 3),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    backgroundColor: Colors.white,
-                    padding: const EdgeInsets.all(50),
-                  ),
-                  child: const Icon(
-                    Icons.arrow_forward,
-                    size: 24,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {},
-                ))
+              padding: EdgeInsets.fromLTRB(
+                  paddingHeight * 3, 0, paddingHeight * 3, 0),
+              child: spinkit,
+            ),
           ],
         ));
   }
