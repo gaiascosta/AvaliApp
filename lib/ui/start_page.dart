@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:projeto/ui/home_page.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class StartPage extends StatefulWidget {
+  const StartPage({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<StartPage> createState() => _StartPageState();
 }
 
-class _HomeState extends State<Home> {
+class _StartPageState extends State<StartPage> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery
@@ -54,6 +55,12 @@ class _HomeState extends State<Home> {
               padding: EdgeInsets.fromLTRB(
                   paddingHeight * 3, 0, paddingHeight * 3, 0),
               child: spinkit,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+              },
+              child: Text('Ir para Tela 3'),
             ),
           ],
         ));
