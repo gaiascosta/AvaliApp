@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:projeto/ui/dados.dart';
+import 'package:projeto/ui/perfil.dart';
+import 'package:projeto/ui/perguntas.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,56 +12,46 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
+  final tabs = [
+    Perguntas(),
+    Dados(),
+    Perfil()
+  ];
+
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
-    double paddingWidth = screenWidth * 0.01;
-    double paddingHeight = screenHeight * 0.01;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text("Colocar botões de mudar de página"),
-        centerTitle: true,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(paddingHeight),
-            child: SizedBox(
-              height: screenWidth * 0.26,
-              child: Image.asset(
-                "images/frame2.png",
-                fit: BoxFit.contain,
-              ),
-            ),
+      body: tabs[_currentIndex],
+      bottomNavigationBar: Container(
+        color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+          child: GNav(
+            selectedIndex: _currentIndex,
+            backgroundColor: Colors.black,
+            color: Colors.white,
+            activeColor: Colors.white,
+            tabBackgroundColor: Colors.grey.shade800,
+            gap: 8,
+            padding: const EdgeInsets.all(16),
+            tabs: const [
+              GButton(icon: Icons.home,
+                  text: 'Perguntas'),
+              GButton(icon: Icons.bar_chart,
+                  text: 'Dados'),
+              GButton(icon: Icons.person,
+                  text: 'Perfil'),
+            ],
+            onTabChange: (index){
+              setState(() {
+                _currentIndex = index;
+              });
+            },
           ),
-          Padding(
-            padding: EdgeInsets.all(screenHeight * 0.01),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(padding: EdgeInsets.all(screenHeight * 0.01),child: SizedBox(
-                  height: screenWidth * 0.25,
-                  child: Image.asset(
-                    "images/frame1.png",
-                    fit: BoxFit.contain,
-                  ),
-                ),),
-                Padding(padding: EdgeInsets.all(screenHeight * 0.01),child: SizedBox(
-                  height: screenWidth * 0.25,
-                  child: Image.asset(
-                    "images/frame1.png",
-                    fit: BoxFit.contain,
-                  ),
-                ),),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      )
     );
   }
 }
+
