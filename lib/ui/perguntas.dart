@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class Perguntas extends StatefulWidget {
@@ -11,6 +13,7 @@ class _PerguntasState extends State<Perguntas> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     double paddingWidth = screenWidth * 0.01;
 
@@ -23,61 +26,63 @@ class _PerguntasState extends State<Perguntas> {
             color: Colors.red,
           child: Column(
             children: [
-            Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-              Container(
-                alignment: Alignment.center,
-                height: 200,
-                child: Image.asset("images/Perfil.png"),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                        radius: 50,
-                        backgroundImage: AssetImage("images/grandma.png")),
-                    Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 10, bottom: 5),
-                            child: Text(
-                              "José da Silva Alves",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Text(
-                              "ILPI de Belo Horizonte",
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          )
+              perfil(),
         ],
       ),
     ));
   }
 }
+
+Widget perfil() => Stack(
+  alignment: Alignment.centerLeft,
+  children: [
+    Container(
+      alignment: Alignment.center,
+      height: 250,
+      child: Image.asset("images/Perfil.png"),
+    ),
+    const Padding(
+      padding: EdgeInsets.only(left: 10, right: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage("images/grandma.png")),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 10, bottom: 5),
+                  child: Text(
+                    "José da Silva Alves de Pedro Alcantara",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                    "ILPI de Belo Horizonte",
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    ),
+  ],
+);
