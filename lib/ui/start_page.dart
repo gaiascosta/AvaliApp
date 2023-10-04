@@ -11,28 +11,22 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   @override
+
   //Duas funções temporárias para simular um carregamento
   void initState(){
     super.initState();
     _navigatetohome();
   }
-
   _navigatetohome()async{
     await Future.delayed(Duration(milliseconds: 1500), () {});
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
     double screenHeight = MediaQuery
         .of(context)
         .size
         .height;
-
-    double paddingWidth = screenWidth * 0.01;
     double paddingHeight = screenHeight * 0.01;
 
     var spinkit = SpinKitWave(
