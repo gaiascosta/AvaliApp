@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class Perguntas extends StatefulWidget {
@@ -18,71 +16,77 @@ class _PerguntasState extends State<Perguntas> {
     double paddingWidth = screenWidth * 0.01;
 
     return Scaffold(
-        body: Container(
-          padding: EdgeInsets.only(
+      body: ListView(
+        padding: EdgeInsets.only(
             top: paddingWidth * 5,
             left: paddingWidth * 5,
             right: paddingWidth * 5),
-            color: Colors.red,
-          child: Column(
-            children: [
-              perfil(),
-        ],
-      ),
-    ));
-  }
-}
-
-Widget perfil() => Stack(
-  alignment: Alignment.centerLeft,
-  children: [
-    Container(
-      alignment: Alignment.center,
-      height: 250,
-      child: Image.asset("images/Perfil.png"),
-    ),
-    const Padding(
-      padding: EdgeInsets.only(left: 10, right: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage("images/grandma.png")),
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 10, bottom: 5),
-                  child: Text(
-                    "José da Silva Alves de Pedro Alcantara",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text(
-                    "ILPI de Belo Horizonte",
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          Column(
+            children: [
+              perfil(screenWidth, screenHeight),
+            ],
           )
         ],
       ),
-    ),
-  ],
-);
+    );
+  }
+}
+
+Widget perfil(screenWidth, screenHeight) => Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade800,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+         Padding(padding: const EdgeInsets.only(top: 10,bottom: 10, left: 10), child: Container(
+           height: screenHeight * 0.15,
+           width: screenHeight * 0.15,
+           decoration: const BoxDecoration(
+             shape: BoxShape.circle,
+             color: Colors.green,
+           ),
+           child: ClipRRect(
+             borderRadius: BorderRadius.circular(screenHeight * 0.1),
+             child: Image.asset(
+               "images/frame2.png",
+               fit: BoxFit.cover,
+             ),
+           ),
+         ),),
+          Flexible(
+            child: Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: SizedBox(
+                  width: screenWidth * 0.5,
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "José da Silva Alves de Pedro Alcantara",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "ILPI de Belo Horizonte",
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                )),
+          )
+        ],
+      ),
+    );
