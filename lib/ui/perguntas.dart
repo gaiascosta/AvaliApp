@@ -8,12 +8,16 @@ class Perguntas extends StatefulWidget {
 }
 
 class _PerguntasState extends State<Perguntas> {
+  static const smallestAndroidSize = Size(360.0, 640.0);
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-
     double paddingWidth = screenWidth * 0.01;
+
+    Size getScreenSize = MediaQuery.of(context).size;
+    bool isSmallestScreen = getScreenSize <= smallestAndroidSize;
 
     return Scaffold(
       body: ListView(
@@ -24,7 +28,7 @@ class _PerguntasState extends State<Perguntas> {
         children: [
           Column(
             children: [
-              perfil(screenWidth, screenHeight),
+              perfil(screenWidth, screenHeight, isSmallestScreen),
             ],
           )
         ],
@@ -33,7 +37,7 @@ class _PerguntasState extends State<Perguntas> {
   }
 }
 
-Widget perfil(screenWidth, screenHeight) => Container(
+Widget perfil(screenWidth, screenHeight, isSmallestScreen) => Container(
       decoration: BoxDecoration(
         color: Colors.grey.shade800,
         borderRadius: BorderRadius.circular(20),
@@ -61,7 +65,7 @@ Widget perfil(screenWidth, screenHeight) => Container(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: SizedBox(
                   width: screenWidth * 0.5,
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -69,7 +73,7 @@ Widget perfil(screenWidth, screenHeight) => Container(
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: isSmallestScreen? 14 : 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -79,7 +83,7 @@ Widget perfil(screenWidth, screenHeight) => Container(
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: isSmallestScreen? 12 : 16,
                           color: Colors.white,
                         ),
                       ),
