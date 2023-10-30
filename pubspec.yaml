@@ -64,7 +64,12 @@ flutter:
   assets:
     - images/grandma.png
     - images/intro.png
-    - images/frame1.png
+    - images/Frame 1.png
+    - images/Frame 2.png
+    - images/Frame 3.png
+    - images/Frame 4.png
+    - images/Frame 5.png
+    - images/Frame 6.png
     - images/frame2.png
     - images/Frame3.png
     - images/Perfil.png
