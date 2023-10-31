@@ -15,36 +15,34 @@ class _PerguntasState extends State<Perguntas> {
     double paddingWidth = screenWidth * 0.01;
 
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.only(
-            top: paddingWidth * 5,
-            left: paddingWidth * 5,
-            right: paddingWidth * 5),
-        children: [
-          Column(
-            children: [
-              perfil(screenWidth, screenHeight),
-              sugestion(screenWidth, screenHeight),
-              dimensions(screenWidth, screenHeight),
-            ],
-          )
-        ],
+      body: SafeArea(
+        child: ListView(
+          padding: EdgeInsets.only(
+              top: paddingWidth * 5,
+              left: paddingWidth * 5,
+              right: paddingWidth * 5),
+          children: [
+            Column(
+              children: [
+                perfil(screenWidth, screenHeight),
+                sugestion(screenWidth, screenHeight),
+                dimensions(screenWidth, screenHeight),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
 }
 
-Widget sugestion(screenWidth, screenHeight) => Padding(
-    padding: EdgeInsets.only(
-      bottom: 0,
-    ),
-    child: Column(children: [
-      Padding(
+Widget sugestion(screenWidth, screenHeight) => Column(children: [
+      const Padding(
         padding: EdgeInsets.only(top: 30, left: 20, right: 20),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(
-            "Responda Agora",
+            "Responda agora",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -66,8 +64,8 @@ Widget sugestion(screenWidth, screenHeight) => Padding(
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(
-              image: AssetImage('images/Frame 1.png'),
+            image: const DecorationImage(
+              image: AssetImage('lib/images/Frame 1.png'),
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -75,7 +73,7 @@ Widget sugestion(screenWidth, screenHeight) => Padding(
           width: screenWidth * 0.85,
         ),
       )
-    ]));
+    ]);
 
 Widget dimensions(screenWidth, screenHeight) => Padding(
       padding: EdgeInsets.only(bottom: 30),
@@ -103,7 +101,7 @@ Widget dimensions(screenWidth, screenHeight) => Padding(
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/Frame 1.png'),
+                      image: AssetImage('lib/images/Frame 1.png'),
                       fit: BoxFit.fill,
                     ),
                     borderRadius: BorderRadius.circular(20),
@@ -114,38 +112,7 @@ Widget dimensions(screenWidth, screenHeight) => Padding(
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/Frame 2.png'),
-                      fit: BoxFit.fill,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  height: screenWidth * 0.4,
-                  width: screenWidth * 0.4,
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/Frame 3.png'),
-                      fit: BoxFit.fill,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  height: screenWidth * 0.4,
-                  width: screenWidth * 0.4,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/Frame 4.png'),
+                      image: AssetImage('lib/images/Frame 2.png'),
                       fit: BoxFit.fill,
                     ),
                     borderRadius: BorderRadius.circular(20),
@@ -165,7 +132,7 @@ Widget dimensions(screenWidth, screenHeight) => Padding(
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/Frame 5.png'),
+                      image: AssetImage('lib/images/Frame 3.png'),
                       fit: BoxFit.fill,
                     ),
                     borderRadius: BorderRadius.circular(20),
@@ -176,7 +143,38 @@ Widget dimensions(screenWidth, screenHeight) => Padding(
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/Frame 6.png'),
+                      image: AssetImage('lib/images/Frame 4.png'),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  height: screenWidth * 0.4,
+                  width: screenWidth * 0.4,
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('lib/images/Frame 5.png'),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  height: screenWidth * 0.4,
+                  width: screenWidth * 0.4,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('lib/images/Frame 6.png'),
                       fit: BoxFit.fill,
                     ),
                     borderRadius: BorderRadius.circular(20),
@@ -211,7 +209,7 @@ Widget perfil(screenWidth, screenHeight) => Container(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(screenHeight * 0.1),
                 child: Image.asset(
-                  "images/frame2.png",
+                  "lib/images/frame2.png",
                   fit: BoxFit.cover,
                 ),
               ),

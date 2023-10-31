@@ -42,7 +42,7 @@ class _StartPageState extends State<StartPage> {
             SizedBox(
               height: screenHeight * 0.6,
               child: Image.asset(
-                "images/intro.png",
+                "lib/images/intro.png",
                 fit: BoxFit.contain,
               ),
             ),
