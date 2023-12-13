@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pop(context);
       if (e.code == 'invalid-email') {
         errorMessage("E-mail inválido");
-      } else if (e.code == 'invalid-credential'){
+      } else if (e.code == 'invalid-credential') {
         errorMessage("E-mail ou senha incorretos");
       } else {
         errorMessage("Um erro inesperado ocorreu");
@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
         body: SafeArea(
           child: SingleChildScrollView(
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Column(
               children: [
                 const SizedBox(height: 20),
@@ -132,7 +132,8 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     SquareTile(
                         onTap: () => AuthService().signInWithGoogle(),
-                        imagePath: 'lib/images/googleLogo.png', height: 70),
+                        imagePath: 'lib/images/googleLogo.png',
+                        height: 70),
                   ],
                 ),
                 //
