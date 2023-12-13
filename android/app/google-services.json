@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676604351444",
+    "project_id": "avaliapp-e041d",
+    "storage_bucket": "avaliapp-e041d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676604351444:android:d0da728007693190d5bc41",
+        "android_client_info": {
+          "package_name": "br.com.avaliapp.coltec.avaliapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKefKdhEpmLuwobmACo0q9GUxmolxVb_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
