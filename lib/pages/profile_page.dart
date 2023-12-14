@@ -11,15 +11,20 @@ class ProfilePage extends StatelessWidget {
     }
 
     return Scaffold(
-        body: SafeArea(
-      child: Center(
+      body: SafeArea(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("Sair:"),
-          IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout))
-        ],
-      )),
-    ));
+            children: [
+              const Text("Sair:"),
+              IconButton(
+                onPressed: signUserOut,
+                icon: const Icon(Icons.logout),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

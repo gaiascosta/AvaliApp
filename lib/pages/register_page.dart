@@ -27,7 +27,9 @@ class _RegisterPageState extends State<RegisterPage> {
           return CupertinoAlertDialog(
             title: Text(
               message,
-              style: const TextStyle(fontWeight: FontWeight.normal),
+              style: const TextStyle(
+                fontWeight: FontWeight.normal,
+              ),
             ),
           );
         });
@@ -57,11 +59,11 @@ class _RegisterPageState extends State<RegisterPage> {
       Navigator.pop(context);
       if (e.code == 'invalid-email') {
         errorMessage("E-mail inválido");
-      } else if(e.code == 'email-already-in-use'){
+      } else if (e.code == 'email-already-in-use') {
         errorMessage("E-mail já cadastrado");
-      } else if(e.code == 'weak-password'){
+      } else if (e.code == 'weak-password') {
         errorMessage("Senha muito fraca");
-      } else{
+      } else {
         errorMessage("Um erro inesperado ocorreu");
       }
     }
@@ -70,16 +72,19 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
-        body: SafeArea(
-          child: SingleChildScrollView(
-              child: Padding(
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Column(
               children: [
                 const SizedBox(height: 20),
                 //
-                Image.asset("lib/images/logo.png", height: 150),
+                Image.asset(
+                  "lib/images/logo.png",
+                  height: 150,
+                ),
                 //
                 const SizedBox(height: 30),
                 //
@@ -103,7 +108,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 //
                 const SizedBox(height: 20),
                 //
-                MyButton(onTap: signUserUp, text: 'Cadastrar'),
+                MyButton(
+                  onTap: signUserUp,
+                  text: 'Cadastrar',
+                ),
                 //
                 const SizedBox(height: 30),
                 //
@@ -134,8 +142,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SquareTile(
-                      onTap: () => AuthService().signInWithGoogle(),
-                        imagePath: 'lib/images/googleLogo.png', height: 70),
+                        onTap: () => AuthService().signInWithGoogle(),
+                        imagePath: 'lib/images/googleLogo.png',
+                        height: 70),
                   ],
                 ),
                 //
@@ -155,12 +164,14 @@ class _RegisterPageState extends State<RegisterPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
-          )),
-        ));
+          ),
+        ),
+      ),
+    );
   }
 }

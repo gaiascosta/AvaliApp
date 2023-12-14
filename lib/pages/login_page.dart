@@ -26,7 +26,9 @@ class _LoginPageState extends State<LoginPage> {
           return CupertinoAlertDialog(
             title: Text(
               message,
-              style: const TextStyle(fontWeight: FontWeight.normal),
+              style: const TextStyle(
+                fontWeight: FontWeight.normal,
+              ),
             ),
           );
         });
@@ -62,16 +64,19 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
-        body: SafeArea(
-          child: SingleChildScrollView(
-              child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Column(
               children: [
                 const SizedBox(height: 20),
                 //
-                Image.asset("lib/images/logo.png", height: 150),
+                Image.asset(
+                  "lib/images/logo.png",
+                  height: 150,
+                ),
                 //
                 const SizedBox(height: 79),
                 //
@@ -92,15 +97,22 @@ class _LoginPageState extends State<LoginPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("Esqueceu sua senha?",
-                          style: TextStyle(color: Colors.grey[600])),
+                      Text(
+                        "Esqueceu sua senha?",
+                        style: TextStyle(
+                          color: Colors.grey[600],
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 //
                 const SizedBox(height: 20),
                 //
-                MyButton(onTap: signUserIn, text: 'Entrar'),
+                MyButton(
+                  onTap: signUserIn,
+                  text: 'Entrar',
+                ),
                 //
                 const SizedBox(height: 30),
                 //
@@ -131,9 +143,10 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SquareTile(
-                        onTap: () => AuthService().signInWithGoogle(),
-                        imagePath: 'lib/images/googleLogo.png',
-                        height: 70),
+                      onTap: () => AuthService().signInWithGoogle(),
+                      imagePath: 'lib/images/googleLogo.png',
+                      height: 70,
+                    ),
                   ],
                 ),
                 //
@@ -153,12 +166,14 @@ class _LoginPageState extends State<LoginPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
-          )),
-        ));
+          ),
+        ),
+      ),
+    );
   }
 }
