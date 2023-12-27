@@ -17,9 +17,9 @@ class _HomePageState extends State<HomePage> {
 
   int _currentIndex = 1;
   final tabs = [
-    DataPage(),
-    QuestionsPage(),
-    ProfilePage(),
+    const DataPage(),
+    const QuestionsPage(),
+    const ProfilePage(),
   ];
 
   @override
