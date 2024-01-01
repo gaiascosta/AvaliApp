@@ -6,6 +6,9 @@ import 'package:avaliapp/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key, required this.onTap});
@@ -51,6 +54,19 @@ class _RegisterPageState extends State<RegisterPage> {
           password: passwordController.text,
         );
         Navigator.pop(context);
+        User? user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          final String file =
+              await rootBundle.loadString('lib/components/answer_model.json');
+          final answerModel = await json.decode(file);
+          FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+            'email': user.email,
+            'answers': answerModel,
+            'picture': "",
+            'institution': "",
+            'name': "",
+          });
+        }
       } else {
         Navigator.pop(context);
         errorMessage("As senhas não coincidem");

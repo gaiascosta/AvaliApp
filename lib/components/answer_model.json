@@ -1,0 +1,55 @@
+{
+    "dimensões": [
+        {
+            "ambiente": [
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        {
+            "equipe de trabalho": [
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        {
+            "cuidado": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        {
+            "lar": [
+                null,
+                null,
+                null
+            ]
+        },
+        {
+            "envolvimento familiar": [
+                null,
+                null
+            ]
+        },
+        {
+            "gestão da ILPI": [
+                null,
+                null,
+                null,
+                null
+            ]
+        }
+    ]
+}
