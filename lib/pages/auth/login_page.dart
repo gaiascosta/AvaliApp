@@ -1,7 +1,7 @@
 import 'package:avaliapp/components/my_button.dart';
 import 'package:avaliapp/components/my_text_field.dart';
 import 'package:avaliapp/components/square_tile.dart';
-import 'package:avaliapp/pages/forgot_password_page.dart';
+import 'package:avaliapp/pages/auth/forgot_password_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

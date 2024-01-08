@@ -1,5 +1,5 @@
-import 'package:avaliapp/pages/login_page.dart';
-import 'package:avaliapp/pages/register_page.dart';
+import 'package:avaliapp/pages/auth/login_page.dart';
+import 'package:avaliapp/pages/auth/register_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {

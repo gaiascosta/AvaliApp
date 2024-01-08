@@ -1,4 +1,4 @@
-import 'package:avaliapp/pages/login_or_register_page.dart';
+import 'package:avaliapp/pages/auth/login_or_register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:avaliapp/pages/home_page.dart';
