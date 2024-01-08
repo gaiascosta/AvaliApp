@@ -16,7 +16,7 @@ class QuestionsPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 19, 19, 36),
+                      color: const Color.fromARGB(255, 19, 19, 36),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(

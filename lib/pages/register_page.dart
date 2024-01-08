@@ -171,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     const Text("Já possui uma conta?"),
                     const SizedBox(width: 5),
-                    GestureDetector(
+                    InkWell(
                       onTap: widget.onTap,
                       child: const Text(
                         "Faça o login",

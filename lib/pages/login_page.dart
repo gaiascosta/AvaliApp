@@ -1,7 +1,7 @@
-// ignore_for_file: use_build_context_synchronously
 import 'package:avaliapp/components/my_button.dart';
 import 'package:avaliapp/components/my_text_field.dart';
 import 'package:avaliapp/components/square_tile.dart';
+import 'package:avaliapp/pages/forgot_password_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -47,8 +47,9 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
-
       Navigator.pop(context);
+
+
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       if (e.code == 'invalid-email') {
@@ -97,10 +98,22 @@ class _LoginPageState extends State<LoginPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "Esqueceu sua senha?",
-                        style: TextStyle(
-                          color: Colors.grey[600],
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const ForgotPasswordPage();
+                              },
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Esqueceu sua senha?",
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                          ),
                         ),
                       ),
                     ],
@@ -157,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     const Text("Ainda não possui uma conta?"),
                     const SizedBox(width: 5),
-                    GestureDetector(
+                    InkWell(
                       onTap: widget.onTap,
                       child: const Text(
                         "Registre-se",
