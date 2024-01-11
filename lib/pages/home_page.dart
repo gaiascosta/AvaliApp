@@ -26,7 +26,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: tabs[_currentIndex],
-      bottomNavigationBar: Container(
+      bottomNavigationBar: 
+      Container(
         color: Colors.black,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),

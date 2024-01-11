@@ -60,11 +60,11 @@ class _RegisterPageState extends State<RegisterPage> {
               await rootBundle.loadString('lib/components/answer_model.json');
           final answerModel = await json.decode(file);
           FirebaseFirestore.instance.collection('users').doc(user.uid).set({
-            'email': user.email,
-            'answers': answerModel,
-            'picture': "",
-            'institution': "",
-            'name': "",
+            'E-mail': user.email,
+            'Respostas': answerModel,
+            'Foto': "",
+            'Instituição': "Insira o nome da sua instituição",
+            'Nome': "Insira o seu nome",
           });
         }
       } else {
