@@ -1,7 +1,10 @@
+import 'dart:io';
 import 'package:avaliapp/components/profile_text_box.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -12,8 +15,36 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final currentUser = FirebaseAuth.instance.currentUser!;
-
+  final storage = FirebaseStorage.instance;
   final usersCollection = FirebaseFirestore.instance.collection("users");
+
+  Future<void> uploadProfileImage(ImageSource source) async {
+    try {
+      final pickedFile = await ImagePicker().pickImage(source: source);
+      if (pickedFile == null) return;
+      popContext();
+
+      String userDirectory = currentUser.uid;
+      Reference referenceRoot = FirebaseStorage.instance.ref().child('users');
+      Reference referenceDireImages = referenceRoot.child(userDirectory);
+      Reference referenceImageToUpload = referenceDireImages.child('Foto');
+
+      UploadTask uploadTask =
+          referenceImageToUpload.putFile(File(pickedFile.path));
+      TaskSnapshot uploadSnapshot = await uploadTask;
+
+      String downloadURL = await uploadSnapshot.ref.getDownloadURL();
+
+      await usersCollection.doc(currentUser.uid).update({'Foto': downloadURL});
+    } catch (e) {
+      return;
+    }
+  }
+
+  //Não acho que isso seja uma boa prática, mas o compilador não reclama
+  void popContext() {
+    Navigator.of(context).pop();
+  }
 
   Future<void> editField(String field) async {
     String newValue = "";
@@ -57,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
 
-    if(newValue.trim().isNotEmpty){
+    if (newValue.trim().isNotEmpty) {
       await usersCollection.doc(currentUser.uid).update({field: newValue});
     }
   }
@@ -97,9 +128,36 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(
                       height: 50,
                     ),
-                    const Icon(
-                      Icons.person,
-                      size: 150,
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            userData['Foto'],
+                          ),
+                          radius: 80,
+                        ),
+                        Positioned(
+                          right: 100,
+                          bottom: 0,
+                          child: InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: ((builder) => bottomSheet()),
+                              );
+                            },
+                            child: const Icon(
+                              Icons.camera_alt,
+                              color: Colors.black,
+                              size: 28,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     Text(
                       currentUser.email!,
@@ -152,6 +210,62 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: CircularProgressIndicator(),
               );
             }),
+      ),
+    );
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: <Widget>[
+          const Text(
+            "Escolher Foto",
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                ElevatedButton.icon(
+                  icon: const Icon(
+                    Icons.camera,
+                    color: Colors.green,
+                  ),
+                  onPressed: () {
+                    uploadProfileImage(ImageSource.camera);
+                  },
+                  label: const Text(
+                    "Câmera",
+                    style: TextStyle(
+                      color: Colors.green,
+                    ),
+                  ),
+                ),
+                ElevatedButton.icon(
+                  icon: const Icon(
+                    Icons.image,
+                    color: Colors.green,
+                  ),
+                  onPressed: () {
+                    uploadProfileImage(ImageSource.gallery);
+                  },
+                  label: const Text("Galeria",
+                      style: TextStyle(
+                        color: Colors.green,
+                      )),
+                ),
+              ])
+        ],
       ),
     );
   }
