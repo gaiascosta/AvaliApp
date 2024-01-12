@@ -35,23 +35,16 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void signUserIn() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
-      Navigator.pop(context);
+      
 
 
     } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
+      
       if (e.code == 'invalid-email') {
         errorMessage("E-mail inválido");
       } else if (e.code == 'invalid-credential') {

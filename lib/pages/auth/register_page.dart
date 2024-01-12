@@ -39,13 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void signUserUp() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
     try {
       //Erro de confirmação da senha
       if (passwordController.text == confirmPasswordController.text) {
@@ -53,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
           email: emailController.text,
           password: passwordController.text,
         );
-        Navigator.pop(context);
+        
         User? user = FirebaseAuth.instance.currentUser;
         if (user != null) {
           final String file =
@@ -62,17 +55,17 @@ class _RegisterPageState extends State<RegisterPage> {
           FirebaseFirestore.instance.collection('users').doc(user.uid).set({
             'E-mail': user.email,
             'Respostas': answerModel,
-            'Foto': "",
+            'Foto': "https://firebasestorage.googleapis.com/v0/b/avaliapp-e041d.appspot.com/o/Fotos%2FdefaultProfilePicture.jpg?alt=media&token=29beb6cb-c6ca-4378-abf8-b94736d425c7",
             'Instituição': "Insira o nome da sua instituição",
             'Nome': "Insira o seu nome",
           });
         }
       } else {
-        Navigator.pop(context);
+        
         errorMessage("As senhas não coincidem");
       }
     } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
+      
       if (e.code == 'invalid-email') {
         errorMessage("E-mail inválido");
       } else if (e.code == 'email-already-in-use') {
