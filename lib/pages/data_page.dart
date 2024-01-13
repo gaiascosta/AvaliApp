@@ -5,6 +5,11 @@ class DataPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Página com os dados"),);
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      body: const Center(
+        child: Text("Página com os dados",),
+      ),
+    );
   }
 }

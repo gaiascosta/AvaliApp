@@ -1,5 +1,6 @@
 import 'package:avaliapp/components/dimension_button.dart';
 import 'package:flutter/material.dart';
+import 'questionscreen.dart';
 
 class QuestionsPage extends StatelessWidget {
   const QuestionsPage({super.key});
@@ -7,6 +8,7 @@ class QuestionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -16,7 +18,7 @@ class QuestionsPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 19, 19, 36),
+                      color: const Color.fromARGB(255, 19, 19, 36),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
@@ -76,6 +78,15 @@ class QuestionsPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QuestionScreen()),
+                    );
+                  },
+                  child: Text('Iniciar Perguntas'),
                 ),
                 const SizedBox(height: 50),
                 GridView.builder(

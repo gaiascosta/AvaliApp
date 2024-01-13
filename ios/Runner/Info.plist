@@ -16,6 +16,12 @@
 		</dict>
 	</array>
 	<!-- End of the Google Sign-in Section -->
+	<key>NSCameraUsageDescription</key>
+	<string>Image Picker</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Image Picker</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Image Picker</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

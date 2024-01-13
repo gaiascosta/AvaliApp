@@ -47,11 +47,11 @@ class AuthService {
         await rootBundle.loadString('lib/components/answer_model.json');
     final answerModel = await json.decode(file);
     await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
-      'email': user.email,
-      'answers': answerModel,
-      'picture': "",
-      'institution': "",
-      'name': "",
+      'E-mail': user.email,
+      'Respostas': answerModel,
+      'Foto': "https://firebasestorage.googleapis.com/v0/b/avaliapp-e041d.appspot.com/o/Fotos%2FdefaultProfilePicture.jpg?alt=media&token=29beb6cb-c6ca-4378-abf8-b94736d425c7",
+      'Instituição': "Insira o nome da sua instituição",
+      'Nome': "Insira o seu nome",
     });
   }
 }
