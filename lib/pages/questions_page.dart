@@ -1,9 +1,14 @@
 import 'package:avaliapp/components/dimension_button.dart';
 import 'package:flutter/material.dart';
-import 'questionscreen.dart';
+import 'question_screens/cuidado_screen.dart';
+import 'question_screens/equipe_screen.dart';
+import 'question_screens/ambiente_screen.dart';
+import 'question_screens/lar_screen.dart';
+import 'question_screens/gestao_screen.dart';
+import 'question_screens/ef_screen.dart';
 
 class QuestionsPage extends StatelessWidget {
-  const QuestionsPage({super.key});
+  const QuestionsPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -79,15 +84,6 @@ class QuestionsPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => QuestionScreen()),
-                    );
-                  },
-                  child: Text('Iniciar Perguntas'),
-                ),
                 const SizedBox(height: 50),
                 GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -100,7 +96,11 @@ class QuestionsPage extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(20),
                   itemBuilder: (context, index) => DimensionButton(
-                      imagePath: 'lib/images/Frame$index.png', onTap: () {}),
+                    imagePath: 'lib/images/Frame$index.png',
+                    onTap: () {
+                      _navigateToDestinationScreen(context, index);
+                    },
+                  ),
                 ),
                 Container(
                   color: Colors.red,
@@ -113,5 +113,48 @@ class QuestionsPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _navigateToDestinationScreen(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CuidadoScreen()),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => EquipeScreen()),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AmbienteScreen()),
+        );
+        break;
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LarScreen()),
+        );
+        break;
+      case 4:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GestaoScreen()),
+        );
+        break;
+      case 5:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => EfScreen()),
+        );
+        break;
+      default:
+        break;
+    }
   }
 }

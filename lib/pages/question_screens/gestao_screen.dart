@@ -10,19 +10,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: QuestionScreen(),
+      home: GestaoScreen(),
     );
   }
 }
 
-class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({Key? key}) : super(key: key);
+class GestaoScreen extends StatefulWidget {
+  const GestaoScreen({Key? key}) : super(key: key);
 
   @override
-  _QuestionScreenState createState() => _QuestionScreenState();
+  _GestaoScreenState createState() => _GestaoScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> {
+class _GestaoScreenState extends State<GestaoScreen> {
   int currentQuestionIndex = 0;
   List<Question> questions = [
     Question(
@@ -163,15 +163,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   void onOptionSelected(String selectedOption) {
-    // Aqui você pode adicionar a lógica para lidar com a opção selecionada
-    // Por exemplo, pode salvar a resposta ou verificar a corretude da resposta
-    // Após isso, avance para a próxima pergunta.
     if (currentQuestionIndex < questions.length - 1) {
       setState(() {
         currentQuestionIndex++;
       });
     } else {
-      // Isso é opcional, você pode adicionar lógica aqui para o que fazer quando todas as perguntas forem respondidas.
       showDialog(
         context: context,
         builder: (BuildContext context) {
