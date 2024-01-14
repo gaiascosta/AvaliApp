@@ -163,15 +163,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   void onOptionSelected(String selectedOption) {
-    // Aqui você pode adicionar a lógica para lidar com a opção selecionada
-    // Por exemplo, pode salvar a resposta ou verificar a corretude da resposta
-    // Após isso, avance para a próxima pergunta.
     if (currentQuestionIndex < questions.length - 1) {
       setState(() {
         currentQuestionIndex++;
       });
     } else {
-      // Isso é opcional, você pode adicionar lógica aqui para o que fazer quando todas as perguntas forem respondidas.
       showDialog(
         context: context,
         builder: (BuildContext context) {
