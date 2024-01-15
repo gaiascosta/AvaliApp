@@ -26,7 +26,7 @@ class _LarScreenState extends State<LarScreen> {
   int currentQuestionIndex = 0;
   List<Question> questions = [
     Question(
-      text: "\n1- barras de apoio nos quartos:",
+      text: "1- barras de apoio nos quartos:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -35,7 +35,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n2- banheiros adaptados:",
+      text: "2- banheiros adaptados:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -44,7 +44,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n3- portas com largura mínima de 80 cm:",
+      text: "3- portas com largura mínima de 80 cm:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -53,7 +53,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n4- piso antiderrapante em seu ambiente, interno e externo:",
+      text: "4- piso antiderrapante em seu ambiente, interno e externo:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -62,7 +62,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n5- rampas ou elevador, ao invés de escadas:",
+      text: "5- rampas ou elevador, ao invés de escadas:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -71,7 +71,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n6- corrimões:",
+      text: "6- corrimões:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -80,7 +80,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n7- ambientes livres de obstruções:",
+      text: "7- ambientes livres de obstruções:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -89,7 +89,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n8- dormitórios dotados de luz de vigília:",
+      text: "8- dormitórios dotados de luz de vigília:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -98,7 +98,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n9- campainha de alarme:",
+      text: "9- campainha de alarme:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -107,7 +107,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n10- área para guarda de roupas e pertences dos residentes:",
+      text: "10- área para guarda de roupas e pertences dos residentes:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -116,7 +116,7 @@ class _LarScreenState extends State<LarScreen> {
       ],
     ),
     Question(
-      text: "\n11- extintores com data de validade adequada, sirenes, vias de escape, escada de incêndio, porta resistente ao fogo, existência de placas de sinalização, luzes indicadoras:",
+      text: "11- extintores com data de validade adequada, sirenes, vias de escape, escada de incêndio, porta resistente ao fogo, existência de placas de sinalização, luzes indicadoras:",
       options: [
         "Inexistente, a ILPI não apresenta nenhum dos itens definidos pelo padrão",
         "Incipiente, de 1 a 3 itens e é necessário muito esforço para alcançar o padrão de qualidade",
@@ -151,7 +151,19 @@ class _LarScreenState extends State<LarScreen> {
                     onPressed: () {
                       onOptionSelected(option);
                     },
-                    child: Text(option),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFF081c34), // Cor de fundo
+                      padding: EdgeInsets.all(16.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ), 
+                    ),
+                    child: Text(
+                      option,
+                      style: TextStyle(
+                        color: Colors.white, // Cor do texto
+                      ),
+                    ),
                   ),
                 );
               }).toList(),
